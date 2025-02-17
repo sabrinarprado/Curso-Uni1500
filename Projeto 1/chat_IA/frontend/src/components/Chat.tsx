@@ -1,6 +1,5 @@
 import React from "react";
 
-
 interface Mensagem {
     id: number;
     texto: string;

@@ -15,13 +15,21 @@ const EntradaTexto: React.FC<EntradaTextoProps> = ({ onEnviar }) => {
         }
     };
 
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+        if(event.key === 'Enter'){
+            event.preventDefault();
+            handleEnviar();
+        }
+    };
+
     return (
         <div className="entrada-texto">
             <input
                 type="text"
                 value={mensagem}
                 onChange={(e) => setMensagem(e.target.value)}
-                placeholder="Digite sua pergunta..."
+                onKeyDown={handleKeyDown}//chama a função para aceitar a tecla 'Enter'
+                placeholder="Digite sua mensagem..."
             />
             <button onClick={handleEnviar}>Enviar</button>
         </div>

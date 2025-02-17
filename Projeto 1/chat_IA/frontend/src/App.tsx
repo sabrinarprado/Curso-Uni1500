@@ -7,9 +7,7 @@ import './App.css';
 
 const App: React.FC = () => {
     const [chats, setChats] = useState<{ id: number; nome: string }[]>([
-        { id: 1, nome: 'CHAT 1' },
-        { id: 2, nome: 'CHAT 2' },
-        { id: 3, nome: 'CHAT 3' },
+        { id: 1, nome: 'CHAT 1' }
     ]);
     const [chatAtual, setChatAtual] = useState<number | null>(null);
     const [mensagens, setMensagens] = useState<{ id: number; texto: string; remetente: 'usuario' | 'sistema' }[]>([]);
