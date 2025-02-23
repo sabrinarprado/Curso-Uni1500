@@ -7,23 +7,28 @@ chat_bp = Blueprint('chat', __name__)
 
 # Criar um novo chat
 @chat_bp.route('/chats', methods=['POST'])
-@jwt_required()  # Apenas usuários autenticados podem criar chats
+@jwt_required()
 def criar_chat():
-    usuario_id = get_jwt_identity()  # Obtém o ID do usuário autenticado
-    data = request.json
-    titulo = data.get('titulo', 'Novo Chat')
+    usuario_id = get_jwt_identity()
 
     conn = get_connection()
     cursor = conn.cursor()
 
-    cursor.execute("INSERT INTO chat (titulo, data_criacao, idusuario) VALUES (%s, NOW(), %s)", (titulo, usuario_id))
+    # Inserir primeiro para obter o ID gerado
+    cursor.execute("INSERT INTO chat (titulo, data_criacao, idusuario) VALUES (%s, NOW(), %s)", ("", usuario_id))
     conn.commit()
-    chat_id = cursor.lastrowid  # Pega o ID do novo chat criado
+    chat_id = cursor.lastrowid  # Obtém o ID gerado
+
+    # Atualiza o título do chat com o ID
+    titulo = f"Chat {chat_id}"
+    cursor.execute("UPDATE chat SET titulo = %s WHERE idchat = %s", (titulo, chat_id))
+    conn.commit()
 
     cursor.close()
     conn.close()
 
     return jsonify({'message': 'Chat criado com sucesso!', 'chat_id': chat_id, 'titulo': titulo}), 201
+
 
 # Listar chats do usuário autenticado
 @chat_bp.route('/chats', methods=['GET'])

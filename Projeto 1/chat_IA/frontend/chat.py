@@ -14,11 +14,19 @@ def enviar_mensagem(token, chat_id, mensagem):
         return response.json()["resposta"]  # Retorna a resposta da LLM
     return "Erro ao obter resposta."
 
-# Página principal do chat
-def chat_page():
-    st.title("💬 Chat com LLM")
+# 🔹 Função para carregar mensagens do banco de dados
+def carregar_mensagens(token, chat_id):
+    headers = {"Authorization": f"Bearer {token}"}
+    response = requests.get(f"http://127.0.0.1:5000/mensagem/mensagens/{chat_id}", headers=headers)
 
-    # Recuperar token e usuário
+    if response.status_code == 200:
+        return response.json().get("mensagens", [])
+    else:
+        st.error(f"Erro ao carregar mensagens (Código {response.status_code}): {response.text}")
+        return []
+
+# 🔹 Página principal do chat
+def chat_page():
     if "token" not in st.session_state:
         st.warning("Você precisa fazer login para acessar o chat!")
         st.stop()
@@ -30,17 +38,22 @@ def chat_page():
         st.info("Selecione ou crie um chat no menu lateral.")
         st.stop()
 
-    # Exibir histórico do chat
+    # 🔹 Carregar mensagens apenas se o chat for trocado
+    if "last_chat_id" not in st.session_state or st.session_state["last_chat_id"] != chat_id:
+        st.session_state["mensagens"] = carregar_mensagens(token, chat_id)
+        st.session_state["last_chat_id"] = chat_id
+
+    # 🔹 Exibir histórico do chat
     st.subheader(f"Chat {chat_id}")
 
-    if "mensagens" not in st.session_state:
-        st.session_state["mensagens"] = []
+    if not st.session_state["mensagens"]:
+        st.info("Nenhuma mensagem neste chat ainda.")
 
     for msg in st.session_state["mensagens"]:
-        with st.chat_message(msg["origem"]):
+        with st.chat_message("usuario" if msg["origem"] == "usuario" else "LLM"):
             st.write(msg["conteudo"])
 
-    # Entrada de texto
+    # Entrada de texto para enviar novas mensagens
     mensagem = st.chat_input("Digite sua mensagem...")
 
     if mensagem:
@@ -53,3 +66,13 @@ def chat_page():
         st.session_state["mensagens"].append({"origem": "LLM", "conteudo": resposta})
         with st.chat_message("LLM"):
             st.write(resposta)
+
+# 🔹 Função para enviar mensagem ao backend
+def enviar_mensagem(token, chat_id, mensagem):
+    headers = {"Authorization": f"Bearer {token}"}
+    data = {"idchat": chat_id, "conteudo": mensagem}
+    response = requests.post(f"{API_URL}/mensagem/mensagens", json=data, headers=headers)
+
+    if response.status_code == 201:
+        return response.json().get("resposta", "Erro ao obter resposta da LLM.")
+    return f"Erro ao enviar mensagem: {response.text}"
