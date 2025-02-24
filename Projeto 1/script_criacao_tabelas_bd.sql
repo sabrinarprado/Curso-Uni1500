@@ -79,6 +79,27 @@ create table inseminacao(
 select * from fazenda;
 select * from animal_inseminado;
 select * from inseminacao;
+select * from usuario;
+select * from chat;
+select * from mensagem;
+
+select * from animal_inseminado where raca = "Nelore";
+SELECT * FROM animal_inseminado;
+SELECT * FROM inseminacao;
+
+
+SELECT
+    protocolo,
+    COUNT(*) AS total_protocolos,
+    SUM(CASE WHEN DG = 0 AND perda = 0 THEN 1 ELSE 0 END) AS sucesso,
+    ROUND(
+        (SUM(CASE WHEN DG = 0 AND perda = 0 THEN 1 ELSE 0 END) / COUNT(*)) * 100,
+        2
+    ) AS taxa_sucesso_percentual
+FROM inseminacao
+GROUP BY protocolo
+ORDER BY taxa_sucesso_percentual DESC;
+
 
 
 
