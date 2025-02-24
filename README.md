@@ -1,5 +1,5 @@
 # UNI1500 - Curso de Inteligência Artificial 
-![Banner](./imagens/IA-banner.jpg)
+![Banner](./Projeto 1/imagens/IA-banner.jpg)
 
 ### 📋Projeto 1: 
 Criar um chat integrado com LLM para melhorar as vendas sobre protocolos de inseminação. A planilha de dados foi apresentada e foi necessário entender os dados da planilha e preenchê-los com dados coerentes sobre protocolos de inseminação e os resulltados obtidos, a partir disso foi necessário criar o banco de dados, alimentar com os dados da planilha, criar a interface do chat, configurar front e backend e configurar a LMM para que ela consulte os dados e responda o usuário de forma correta e coerente com os dados e também manter o histórico das conversas.
