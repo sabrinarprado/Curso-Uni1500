@@ -22,7 +22,7 @@ A UNI1500 nasceu como um spin-off da 1500 Consulting, com a missão de democrati
 - Interface responsiva: Streamlit + CSS
 
 ## 🚀 Como executar o Projeto 1:
-> No terminal ou git bash(onde o projeto vai ficar) execute:
+```> No terminal ou git bash(onde o projeto vai ficar) execute:
 1. git clone git@github.com:sabrinarprado/Curso-Uni1500.git
 2. Abra no terminal o projeto(dentro da pasta "chat_IA")
 > Se quiser rodar o backend de forma isolada, crie um ambiente virtual(se não, só pular):
@@ -39,7 +39,7 @@ A UNI1500 nasceu como um spin-off da 1500 Consulting, com a missão de democrati
 2. No arquivo db.py no backend altere os dados necessários(host, user, password, database)
 > Agora execute o projeto:
 - backend: py app.py
-- frontend: streamlit run app.py
+- frontend: streamlit run app.py```
 
 
 
