@@ -1,5 +1,5 @@
 # UNI1500 - Curso de Inteligência Artificial 
-![Banner](https://www.google.com/url?sa=i&url=https%3A%2F%2Fravel.com.br%2Fblog%2Fa-importancia-da-ia-no-cotidiano-das-pessoas%2Fia-no-cotidiano-banner%2F&psig=AOvVaw3E5cQ1INnnGgcWJx4Z8rQN&ust=1740523113444000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCKi4loGw3YsDFQAAAAAdAAAAABAE)
+![Banner.](https://ravel.com.br/blog/wp-content/uploads/2023/04/IA-no-Cotidiano-Banner.jpg)
 
 ### 📋Projeto 1: 
 Criar um chat integrado com LLM para melhorar as vendas sobre protocolos de inseminação. A planilha de dados foi apresentada e foi necessário entender os dados da planilha e preenchê-los com dados coerentes sobre protocolos de inseminação e os resulltados obtidos, a partir disso foi necessário criar o banco de dados, alimentar com os dados da planilha, criar a interface do chat, configurar front e backend e configurar a LMM para que ela consulte os dados e responda o usuário de forma correta e coerente com os dados e também manter o histórico das conversas.
