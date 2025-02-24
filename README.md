@@ -1,10 +1,8 @@
 # UNI1500 - Curso de Inteligência Artificial 
 ![Banner](./imagens/IA-banner.jpg)
 
-## 📋 Sobre a UNI1500/OIKO e os projetos
-A UNI1500 nasceu como um spin-off da 1500 Consulting, com a missão de democratizar o acesso às habilidades de dados e promover uma cultura orientada por dados nas empresas.Em resposta ao aumento da demanda por Inteligência Artificial, passamos por uma transformação completa em março de 2023 para atender a essa necessidade crescente. Transferimos 100% de nossos esforços para a pesquisa, o desenvolvimento e o fornecimento de soluções de IA. Os cursos são práticos e executados através de projetos reais que aproxima os alunos da vivência do trabalho de mercado.
-
-### Projeto 1: Criar um chat integrado com LLM para melhorar as vendas sobre protocolos de inseminação. A planilha de dados foi apresentada e foi necessário entender os dados da planilha e preenchê-los com dados coerentes sobre protocolos de inseminação e os resulltados obtidos, a partir disso foi necessário criar o banco de dados, alimentar com os dados da planilha, criar a interface do chat, configurar front e backend e configurar a LMM para que ela consulte os dados e responda o usuário de forma correta e coerente com os dados e também manter o histórico das conversas.
+### 📋Projeto 1: 
+Criar um chat integrado com LLM para melhorar as vendas sobre protocolos de inseminação. A planilha de dados foi apresentada e foi necessário entender os dados da planilha e preenchê-los com dados coerentes sobre protocolos de inseminação e os resulltados obtidos, a partir disso foi necessário criar o banco de dados, alimentar com os dados da planilha, criar a interface do chat, configurar front e backend e configurar a LMM para que ela consulte os dados e responda o usuário de forma correta e coerente com os dados e também manter o histórico das conversas.
 
 **🛠️ Tecnologias Utilizadas**
 **Backend**
